@@ -11,6 +11,7 @@ import WhyWorkWithUs from './components/WhyWorkWithUs.jsx';
 import TestimonialSection from './components/TestimonialSection.jsx';
 import PropertiesByArea from './components/PropertiesByArea.jsx';
 import RecentArticles from './components/RecentArticles.jsx';
+import FindHomeCTA from './components/FindHomeCTA.jsx';
 import './App.css'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <Companies1/>
     <PropertiesByArea/>
     <RecentArticles/>
+    <FindHomeCTA/>
     </>
   )
 }
