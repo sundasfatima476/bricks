@@ -1,0 +1,122 @@
+import React from 'react';
+import { FaCheck, FaHome, FaArrowRight } from 'react-icons/fa';
+import { HiOutlineUserGroup } from 'react-icons/hi';
+import { MdOutlineSecurity } from 'react-icons/md';
+
+// Images Import (Method 1)
+import familyImg from '../assets/images/324.png';
+import houseImg from '../assets/images/326.png';
+
+const WhyWorkWithUs = () => {
+  const features = [
+    { id: 1, text: '100% Secure', icon: <MdOutlineSecurity /> },
+    { id: 2, text: 'Wide Range of Properties', icon: <FaHome /> },
+    { id: 3, text: 'Buy or Rent Homes', icon: <FaHome /> },
+    { id: 4, text: 'Trusted by Thousands', icon: <HiOutlineUserGroup /> },
+  ];
+
+  return (
+    <section className="py-5" style={{ backgroundColor: '#FDF7F5' }}>
+      <div className="container py-5">
+        <div className="row align-items-center">
+          
+          {/* Left Side: Images Grid */}
+          <div className="col-lg-6 mb-5 mb-lg-0">
+            <div className="position-relative d-flex flex-column gap-4">
+              
+              <div className="d-flex gap-4 align-items-end">
+                {/* Family Image */}
+                <img 
+                  src={familyImg} 
+                  alt="Happy Family" 
+                  className="shadow-sm"
+                  style={{ width: '45%', borderRadius: '20px', objectFit: 'cover' }}
+                />
+                
+                {/* Properties Badge/Card */}
+                <div 
+                  className="p-4 text-center shadow-sm"
+                  style={{ 
+                    backgroundColor: '#E4C371', 
+                    borderRadius: '20px',
+                    width: '40%',
+                    marginBottom: '20px'
+                  }}
+                >
+                  <div 
+                    className="bg-white d-inline-flex p-3 rounded-circle mb-3"
+                    style={{ color: '#1A432F', fontSize: '24px' }}
+                  >
+                    <FaHome />
+                  </div>
+                  <h6 className="fw-bold mb-1">Properties For Sel</h6>
+                  <p className="mb-0 fw-bold">14K</p>
+                </div>
+              </div>
+
+              {/* Main House Image */}
+              <div className="ps-5">
+                <img 
+                  src={houseImg} 
+                  alt="Modern House" 
+                  className="w-75 shadow-lg"
+                  style={{ borderRadius: '20px', objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Content */}
+          <div className="col-lg-6 ps-lg-5">
+            <h2 className="fw-bold mb-4" style={{ color: '#1A1A1A', fontSize: '2.5rem' }}>
+              Why You Should Work With Us
+            </h2>
+            <p className="text-muted mb-4" style={{ lineHeight: '1.8' }}>
+              Pellentesque egestas elementum egestas faucibus sem. Velit nunc egestas ut morbi. Leo diam idam.
+            </p>
+
+            {/* Features List */}
+            <div className="row g-3 mb-5">
+              {features.map((item) => (
+                <div key={item.id} className="col-md-6 d-flex align-items-center gap-2">
+                  <div 
+                    className="d-flex align-items-center justify-content-center rounded-circle"
+                    style={{ 
+                      backgroundColor: '#fff', 
+                      color: '#1A432F', 
+                      width: '25px', 
+                      height: '25px',
+                      fontSize: '12px',
+                      boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+                    }}
+                  >
+                    <FaCheck />
+                  </div>
+                  <span style={{ fontSize: '15px', fontWeight: '500', color: '#444' }}>
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <button 
+              className="btn d-inline-flex align-items-center gap-2 px-4 py-2"
+              style={{ 
+                backgroundColor: '#1A432F', 
+                color: '#fff', 
+                borderRadius: '8px',
+                fontWeight: '500'
+              }}
+            >
+              Learn More <FaArrowRight fontSize="14px" />
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default WhyWorkWithUs;
