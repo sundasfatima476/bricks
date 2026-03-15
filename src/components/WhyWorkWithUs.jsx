@@ -29,9 +29,9 @@ const WhyWorkWithUs = () => {
               <div 
                 className="position-absolute shadow-sm" 
                 style={{ 
-                  top: '0', 
-                  left: '0', 
-                  width: '280px', 
+                  top: '35px', 
+                  left: '20px', 
+                  width: '260px', 
                   zIndex: 2,
                   borderRadius: '25px',
                   overflow: 'hidden'
@@ -44,9 +44,9 @@ const WhyWorkWithUs = () => {
               <div 
                 className="position-absolute shadow-lg" 
                 style={{ 
-                  top: '110px', // Family image ke thoda niche se shuru
-                  right: '20px', 
-                  width: '380px', 
+                  top: '160px', // Family image ke thoda niche se shuru
+                  right: '5px', 
+                  width: '300px', 
                   zIndex: 1,
                   borderRadius: '25px',
                   overflow: 'hidden'
@@ -63,7 +63,7 @@ const WhyWorkWithUs = () => {
                   borderRadius: '20px',
                   width: '180px',
                   bottom: '60px', // House image ke bottom se adjust kiya
-                  left: '120px', // Family aur House ke darmayan alignment
+                  left: '100px', // Family aur House ke darmayan alignment
                   zIndex: 3
                 }}
               >
