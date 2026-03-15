@@ -10,6 +10,7 @@ import RecentProperties from './components/RecentProperties.jsx';
 import WhyWorkWithUs from './components/WhyWorkWithUs.jsx';
 import TestimonialSection from './components/TestimonialSection.jsx';
 import PropertiesByArea from './components/PropertiesByArea.jsx';
+import RecentArticles from './components/RecentArticles.jsx';
 import './App.css'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
     <TestimonialSection/>
     <Companies1/>
     <PropertiesByArea/>
+    <RecentArticles/>
     </>
   )
 }
