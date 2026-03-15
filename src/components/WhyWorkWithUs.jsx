@@ -3,7 +3,7 @@ import { FaCheck, FaHome, FaArrowRight } from 'react-icons/fa';
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import { MdOutlineSecurity } from 'react-icons/md';
 
-// Images Import (Method 1)
+// Images Import
 import familyImg from '../assets/images/324.png';
 import houseImg from '../assets/images/326.png';
 
@@ -16,62 +16,78 @@ const WhyWorkWithUs = () => {
   ];
 
   return (
-    <section className="py-5" style={{ backgroundColor: '#FDF7F5' }}>
+    <section className="py-5" style={{ backgroundColor: '#FDF7F5', overflow: 'hidden' }}>
       <div className="container py-5">
         <div className="row align-items-center">
           
-          {/* Left Side: Images Grid */}
+          {/* Left Side: Overlapping Images Layout */}
           <div className="col-lg-6 mb-5 mb-lg-0">
-            <div className="position-relative d-flex flex-column gap-4">
+            {/* Main Relative Container for exact positioning */}
+            <div className="position-relative" style={{ height: '550px', width: '100%' }}>
               
-              <div className="d-flex gap-4 align-items-end">
-                {/* Family Image */}
-                <img 
-                  src={familyImg} 
-                  alt="Happy Family" 
-                  className="shadow-sm"
-                  style={{ width: '45%', borderRadius: '20px', objectFit: 'cover' }}
-                />
-                
-                {/* Properties Badge/Card */}
-                <div 
-                  className="p-4 text-center shadow-sm"
-                  style={{ 
-                    backgroundColor: '#E4C371', 
-                    borderRadius: '20px',
-                    width: '40%',
-                    marginBottom: '20px'
-                  }}
-                >
-                  <div 
-                    className="bg-white d-inline-flex p-3 rounded-circle mb-3"
-                    style={{ color: '#1A432F', fontSize: '24px' }}
-                  >
-                    <FaHome />
-                  </div>
-                  <h6 className="fw-bold mb-1">Properties For Sel</h6>
-                  <p className="mb-0 fw-bold">14K</p>
-                </div>
+              {/* 1. Family Image (Top-Left) */}
+              <div 
+                className="position-absolute shadow-sm" 
+                style={{ 
+                  top: '0', 
+                  left: '0', 
+                  width: '280px', 
+                  zIndex: 2,
+                  borderRadius: '25px',
+                  overflow: 'hidden'
+                }}
+              >
+                <img src={familyImg} alt="Family" className="img-fluid" />
               </div>
 
-              {/* Main House Image */}
-              <div className="ps-5">
-                <img 
-                  src={houseImg} 
-                  alt="Modern House" 
-                  className="w-75 shadow-lg"
-                  style={{ borderRadius: '20px', objectFit: 'cover' }}
-                />
+              {/* 2. House Image (Center-Right) */}
+              <div 
+                className="position-absolute shadow-lg" 
+                style={{ 
+                  top: '110px', // Family image ke thoda niche se shuru
+                  right: '20px', 
+                  width: '380px', 
+                  zIndex: 1,
+                  borderRadius: '25px',
+                  overflow: 'hidden'
+                }}
+              >
+                <img src={houseImg} alt="Modern House" className="img-fluid" />
               </div>
+
+              {/* 3. Yellow Badge Card (Overlapping both) */}
+              <div 
+                className="position-absolute p-4 text-center shadow-sm"
+                style={{ 
+                  backgroundColor: '#E4C371', 
+                  borderRadius: '20px',
+                  width: '180px',
+                  bottom: '60px', // House image ke bottom se adjust kiya
+                  left: '120px', // Family aur House ke darmayan alignment
+                  zIndex: 3
+                }}
+              >
+                <div 
+                  className="bg-white d-inline-flex p-3 rounded-circle mb-2"
+                  style={{ color: '#1A432F', fontSize: '20px' }}
+                >
+                  <FaHome />
+                </div>
+                <h6 className="fw-bold mb-0" style={{ fontSize: '13px', color: '#1A1A1A' }}>
+                    Properties For Sel
+                </h6>
+                <p className="mb-0 fw-bold" style={{ fontSize: '18px' }}>14K</p>
+              </div>
+
             </div>
           </div>
 
           {/* Right Side: Content */}
           <div className="col-lg-6 ps-lg-5">
-            <h2 className="fw-bold mb-4" style={{ color: '#1A1A1A', fontSize: '2.5rem' }}>
-              Why You Should Work With Us
+            <h2 className="fw-bold mb-4" style={{ color: '#1A1A1A', fontSize: '2.8rem', lineHeight: '1.2' }}>
+              Why You Should Work <br /> With Us
             </h2>
-            <p className="text-muted mb-4" style={{ lineHeight: '1.8' }}>
+            <p className="text-muted mb-4" style={{ lineHeight: '1.8', fontSize: '16px' }}>
               Pellentesque egestas elementum egestas faucibus sem. Velit nunc egestas ut morbi. Leo diam idam.
             </p>
 
@@ -84,32 +100,33 @@ const WhyWorkWithUs = () => {
                     style={{ 
                       backgroundColor: '#fff', 
                       color: '#1A432F', 
-                      width: '25px', 
-                      height: '25px',
-                      fontSize: '12px',
-                      boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+                      width: '24px', 
+                      height: '24px',
+                      fontSize: '10px',
+                      boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
                     }}
                   >
                     <FaCheck />
                   </div>
-                  <span style={{ fontSize: '15px', fontWeight: '500', color: '#444' }}>
+                  <span style={{ fontSize: '15px', fontWeight: '500', color: '#333' }}>
                     {item.text}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* CTA Button */}
+            {/* Learn More Button */}
             <button 
-              className="btn d-inline-flex align-items-center gap-2 px-4 py-2"
+              className="btn d-inline-flex align-items-center gap-2 px-4 py-3"
               style={{ 
                 backgroundColor: '#1A432F', 
                 color: '#fff', 
-                borderRadius: '8px',
-                fontWeight: '500'
+                borderRadius: '6px',
+                fontWeight: '600',
+                border: 'none'
               }}
             >
-              Learn More <FaArrowRight fontSize="14px" />
+              Learn More <FaArrowRight size={14} />
             </button>
           </div>
 
