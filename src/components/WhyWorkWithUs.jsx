@@ -29,7 +29,7 @@ const WhyWorkWithUs = () => {
               <div 
                 className="position-absolute shadow-sm" 
                 style={{ 
-                  top: '35px', 
+                  top: '34px', 
                   left: '20px', 
                   width: '260px', 
                   zIndex: 2,
