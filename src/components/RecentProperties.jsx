@@ -14,21 +14,26 @@ import img317 from '../assets/images/317.png';
 import img322 from '../assets/images/322.png';
 
 const RecentProperties = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const properties = [
+  // Properties ko state mein rakha taake order rotate ho sake
+  const [properties, setProperties] = useState([
     { id: 1, image: img307, title: 'New Apartment Nice View', address: '42 Avenue O, Brooklyn', beds: 4, baths: 1, sqft: 460, price: '850', featured: true },
     { id: 2, image: img312, title: 'Villa Garden With Pool', address: '6822 Bay Pkwy, Brooklyn', beds: 3, baths: 1, sqft: 350, price: '350', featured: true },
     { id: 3, image: img317, title: 'Ely Parkway Apartment', address: '7203 20th Ave, Brooklyn', beds: 4, baths: 1, sqft: 560, price: '5,800', featured: true },
     { id: 4, image: img322, title: 'Modern Elegant Apartment', address: '1458 W Taylor St', beds: 4, baths: 1, sqft: 300, price: '590', featured: false }
-  ];
+  ]);
 
+  // Rotation Logic
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % properties.length);
-    }, 4000);
+      setProperties((prev) => {
+        const newArray = [...prev];
+        const firstItem = newArray.shift(); // Pehla card nikala
+        newArray.push(firstItem); // End mein daal diya
+        return newArray;
+      });
+    }, 4000); // Har 4 second baad rotation
     return () => clearInterval(interval);
-  }, [properties.length]);
+  }, []);
 
   return (
     <section className="py-5" style={{ backgroundColor: '#fff' }}>
@@ -40,17 +45,21 @@ const RecentProperties = () => {
 
         <div className="row g-4">
           {properties.map((item, index) => (
-            <div key={item.id} className="col-12 col-md-6 col-lg-3">
+            <div 
+              key={item.id} 
+              className="col-12 col-md-6 col-lg-3" 
+              style={{ transition: 'all 0.6s ease-in-out' }}
+            >
               <div 
                 className="card h-100 border-0 shadow-sm" 
                 style={{ 
                   borderRadius: '15px', 
                   overflow: 'hidden',
                   transition: 'all 0.4s ease',
-                  // --- Black Boundary Logic ---
-                  outline: index === activeIndex ? '2px solid #1A1A1A' : 'none', 
-                  transform: index === activeIndex ? 'translateY(-10px)' : 'none',
-                  boxShadow: index === activeIndex ? '0 10px 20px rgba(0,0,0,0.1)' : 'none'
+                  // Index 0 hamesha highlight rahega kyunke cards rotate ho rahe hain
+                  outline: index === 0 ? '2px solid #1A1A1A' : 'none', 
+                  transform: index === 0 ? 'translateY(-10px)' : 'none',
+                  boxShadow: index === 0 ? '0 10px 20px rgba(0,0,0,0.1)' : 'none'
                 }}
               >
                 <div className="position-relative">
@@ -84,11 +93,11 @@ const RecentProperties = () => {
           ))}
         </div>
 
-        {/* Dots Section */}
+        {/* Dots Section - Static representation of rotation */}
         <div className="mt-5 d-flex justify-content-center gap-2 align-items-center">
           {properties.map((_, index) => (
-            <div key={index} onClick={() => setActiveIndex(index)} style={{ cursor: 'pointer' }}>
-              {index === activeIndex ? (
+            <div key={index}>
+              {index === 0 ? (
                 <div style={{ width: '24px', height: '24px', borderRadius: '50%', border: '1px solid #1A1A1A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <span style={{ width: '8px', height: '8px', backgroundColor: '#1A1A1A', borderRadius: '50%' }}></span>
                 </div>
