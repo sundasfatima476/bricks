@@ -27,19 +27,22 @@ function Navbar() {
       display: "flex",
       alignItems: "center",
       gap: "4px",
+      padding: "10px 15px",
+      transition: "0.3s",
     },
     dropdownMenu: {
       border: "none",
       boxShadow: "0px 8px 24px rgba(0,0,0,0.12)",
       borderRadius: "12px",
       padding: "10px",
-      marginTop: "10px",
+      marginTop: "0", 
     },
     dropdownItem: {
       color: "#2C4B40",
       padding: "8px 15px",
       fontSize: "14px",
       borderRadius: "6px",
+      transition: "0.2s",
     },
     userIconCircle: {
       width: "38px",
@@ -54,24 +57,15 @@ function Navbar() {
     }
   };
 
-  // Helper function: Navbar ke andar hi dropdown banane ke liye
   const renderDropdown = (title, items) => (
-    <li className="nav-item dropdown">
-      <a 
-        className="nav-link dropdown-toggle" 
-        href="#" 
-        id={`dropdown-${title}`} 
-        role="button" 
-        data-bs-toggle="dropdown" 
-        aria-expanded="false" 
-        style={styles.navLink}
-      >
+    <li className="nav-item dropdown custom-dropdown">
+      <a className="nav-link dropdown-toggle" href="#" style={styles.navLink}>
         {title}
       </a>
-      <ul className="dropdown-menu" aria-labelledby={`dropdown-${title}`} style={styles.dropdownMenu}>
+      <ul className="dropdown-menu shadow-sm" style={styles.dropdownMenu}>
         {items.map((item, index) => (
           <li key={index}>
-            <a className="dropdown-item" href="#" style={styles.dropdownItem}>{item}</a>
+            <a className="dropdown-item custom-item" href="#" style={styles.dropdownItem}>{item}</a>
           </li>
         ))}
       </ul>
@@ -79,50 +73,83 @@ function Navbar() {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg" style={styles.navbar}>
-      <div className="container">
-        
-        {/* Logo */}
-        <a className="navbar-brand fw-bold" href="#" style={styles.brand}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M3 21h18M3 7l9-4 9 4v14H3V7z" /><path d="M9 21V9h6v12" />
-          </svg>
-          Bricks&Keys
-        </a>
+    <>
+      <style>
+        {`
+          @media (min-width: 992px) {
+            /* Navbar Link Hover - Green Color */
+            .custom-dropdown:hover > .nav-link {
+              color: #2C4B40 !important; 
+              opacity: 0.7;
+            }
+            
+            /* Show Dropdown on Hover */
+            .custom-dropdown:hover > .dropdown-menu {
+              display: block;
+              animation: fadeInUp 0.3s ease;
+            }
+          }
 
-        {/* Menu Items */}
-        <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
-          <ul className="navbar-nav gap-3">
-            {renderDropdown("Home", ["Main Page", "Modern Home", "Classic Style"])}
-            {renderDropdown("Listings", ["Grid Layout", "List Layout", "Map View"])}
-            {renderDropdown("Members", ["Our Agents", "Agencies", "Packages"])}
-            {renderDropdown("Blog", ["Latest News", "Real Estate Tips"])}
-            {renderDropdown("Pages", ["About Us", "Our Services", "FAQ", "Pricing"])}
-            <li className="nav-item">
-              <a className="nav-link" href="#" style={styles.navLink}>Contact</a>
-            </li>
-          </ul>
-        </div>
+          /* Dropdown Item Hover Effect */
+          .custom-item:hover {
+            background-color: #2C4B40 !important;
+            color: #ffffff !important;
+          }
 
-        {/* Right Section */}
-        <div className="d-flex align-items-center gap-4 ms-auto">
-          <div className="d-none d-lg-flex align-items-center gap-2" style={{color: "#2C4B40", fontWeight: "600"}}>
-            <FaPhoneAlt size={14} />
-            <span>+923286561587</span>
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
+
+      <nav className="navbar navbar-expand-lg" style={styles.navbar}>
+        <div className="container">
+          <a className="navbar-brand fw-bold" href="#" style={styles.brand}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 21h18M3 7l9-4 9 4v14H3V7z" /><path d="M9 21V9h6v12" />
+            </svg>
+            Bricks&Keys
+          </a>
+
+          <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
+            <ul className="navbar-nav gap-3">
+              {renderDropdown("Home", ["Main Page", "Modern Home", "Classic Style"])}
+              {renderDropdown("Listings", ["Grid Layout", "List Layout", "Map View"])}
+              {renderDropdown("Members", ["Our Agents", "Agencies", "Packages"])}
+              {renderDropdown("Blog", ["Latest News", "Real Estate Tips"])}
+              {renderDropdown("Pages", ["About Us", "Our Services", "FAQ", "Pricing"])}
+              <li className="nav-item">
+                <a className="nav-link" href="#" style={styles.navLink}>Contact</a>
+              </li>
+            </ul>
           </div>
 
-          <div  className="custom-btn-outline" style={styles.userIconCircle} onClick={() => setIsModalOpen(true)}>
-            <FaRegUser size={18} />
-          </div>
+          <div className="d-flex align-items-center gap-4 ms-auto">
+            <div className="d-none d-lg-flex align-items-center gap-2" style={{color: "#2C4B40", fontWeight: "600"}}>
+              <FaPhoneAlt size={14} />
+              <span>+923286561587</span>
+            </div>
 
-          <button className="btn custom-btn-outline rounded-pill " style={{borderColor: "#2C4B40", color: "#2C4B40", padding: "8px 22px"}}>
-            Add Property
-          </button>
+            <div style={styles.userIconCircle} onClick={() => setIsModalOpen(true)}>
+              <FaRegUser size={18} />
+            </div>
+
+            <button className="btn rounded-pill" style={{border: "1px solid #2C4B40", color: "#2C4B40", padding: "8px 22px", fontWeight: "500"}}>
+              Add Property
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
 
       <RegistrationForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </nav>
+    </>
   );
 }
 
