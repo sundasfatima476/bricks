@@ -1,7 +1,10 @@
 import React from "react";
 import { FaPhoneAlt, FaRegUser } from "react-icons/fa"; // Updated icons for better match
+import { useState } from "react";
+import RegistrationForm from "./registrationForm"; // Importing the registration form component
 
 function Navbar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // --- Inline Styles ---
   const styles = {
     navbar: {
@@ -53,6 +56,7 @@ function Navbar() {
   };
 
   return (
+    
     <nav className="navbar navbar-expand-lg" style={styles.navbar}>
       <div className="container">
         
@@ -108,7 +112,9 @@ function Navbar() {
             <span>+923286561587</span>
           </div>
 
-          <div style={styles.userIconCircle}>
+          <div style={styles.userIconCircle}
+              onClick={() => setIsModalOpen(true)}
+          >
             <FaRegUser size={18} />
           </div>
 
@@ -119,7 +125,15 @@ function Navbar() {
         </div>
 
       </div>
+      {/* 5. Modal Component ko yahan rakha */}
+     <RegistrationForm 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+      
     </nav>
+    
+   
   );
 }
 

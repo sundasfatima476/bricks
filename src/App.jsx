@@ -12,6 +12,7 @@ import TestimonialSection from './components/TestimonialSection.jsx';
 import PropertiesByArea from './components/PropertiesByArea.jsx';
 import RecentArticles from './components/RecentArticles.jsx';
 import FooterSection from './components/footer.jsx';
+import RegistrationForm from './components/registrationForm.jsx';
 import './App.css'
 import FindHomeCTA from './components/FindHomeCTA.jsx';
 
