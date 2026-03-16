@@ -19,26 +19,20 @@ import PropertiesByArea from './components/PropertiesByArea.jsx';
 import RecentArticles from './components/RecentArticles.jsx';
 import FindHomeCTA from './components/FindHomeCTA.jsx';
 
-// Detail Page Component
+// Detail Page Components
 import CityDetailPage from './components/CityDetailPage';
+import PropertyDetail from './components/PropertyDetail'; 
 
 // Global Styles
 import './App.css';
 
 function App() {
   return (
-    /* The Router component enables navigation throughout the app.
-      It must wrap the entire application structure.
-    */
     <Router>
       <div className="App">
-        {/* Navbar is placed outside Routes so it appears on every page */}
         <Navbar />
 
         <Routes>
-          {/* Main Route: Displays the landing page content.
-            The path "/" represents the home page.
-          */}
           <Route 
             path="/" 
             element={
@@ -58,13 +52,14 @@ function App() {
             } 
           />
 
-          {/* Dynamic Route: Displays when a user clicks a specific city card.
-            The ":slug" is a dynamic parameter that captures the city name (e.g., /properties/new-york).
-          */}
+          {/* City Detail Route */}
           <Route path="/properties/:slug" element={<CityDetailPage />} />
+          
+          {/* Property Detail Route */}
+          <Route path="/properties/:citySlug/:propertySlug" element={<PropertyDetail />} />
+          
         </Routes>
 
-        {/* Footer is placed outside Routes so it remains visible on all pages */}
         <FooterSection />
       </div>
     </Router>
