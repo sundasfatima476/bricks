@@ -14,7 +14,7 @@ import img317 from '../assets/images/317.png';
 import img322 from '../assets/images/322.png';
 
 const RecentProperties = () => {
-  // Properties ko state mein rakha taake order rotate ho sake
+  
   const [properties, setProperties] = useState([
     { id: 1, image: img307, title: 'New Apartment Nice View', address: '42 Avenue O, Brooklyn', beds: 4, baths: 1, sqft: 460, price: '850', featured: true },
     { id: 2, image: img312, title: 'Villa Garden With Pool', address: '6822 Bay Pkwy, Brooklyn', beds: 3, baths: 1, sqft: 350, price: '350', featured: true },
@@ -27,11 +27,11 @@ const RecentProperties = () => {
     const interval = setInterval(() => {
       setProperties((prev) => {
         const newArray = [...prev];
-        const firstItem = newArray.shift(); // Pehla card nikala
-        newArray.push(firstItem); // End mein daal diya
+        const firstItem = newArray.shift(); 
+        newArray.push(firstItem);
         return newArray;
       });
-    }, 4000); // Har 4 second baad rotation
+    }, 4000); 
     return () => clearInterval(interval);
   }, []);
 
@@ -56,7 +56,7 @@ const RecentProperties = () => {
                   borderRadius: '15px', 
                   overflow: 'hidden',
                   transition: 'all 0.4s ease',
-                  // Index 0 hamesha highlight rahega kyunke cards rotate ho rahe hain
+                  
                   outline: index === 0 ? '2px solid #1A1A1A' : 'none', 
                   transform: index === 0 ? 'translateY(-10px)' : 'none',
                   boxShadow: index === 0 ? '0 10px 20px rgba(0,0,0,0.1)' : 'none'
