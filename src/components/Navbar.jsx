@@ -41,10 +41,11 @@ function Navbar() {
       alignItems: "center",
       justifyContent: "center",
       color: "#2C4B40",
+      cursor: "pointer",
     },
     addBtn: {
       borderColor: "#2C4B40",
-      color: "#2C4B40",
+      color: "black",
       padding: "8px 22px",
       fontSize: "14px",
       fontWeight: "500",
