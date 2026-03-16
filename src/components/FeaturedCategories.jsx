@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaHome, FaBuilding, FaBriefcase, FaUsers } from 'react-icons/fa';
 
 const FeaturedCategories = () => {
-  // Categories ko state mein rakha taake inki order (rotation) change ho sakay
+  
   const [categories, setCategories] = useState([
     { id: 1, name: 'Modern Villa', count: '10 Properties', icon: <FaHome /> },
     { id: 2, name: 'Apartment', count: '2 Properties', icon: <FaBuilding /> },
@@ -10,16 +10,16 @@ const FeaturedCategories = () => {
     { id: 4, name: 'Single Family', count: '5 Properties', icon: <FaUsers /> },
   ]);
 
-  // Rotation Logic: Pehla item nikaal kar end mein shift karna
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCategories((prevCategories) => {
         const rotatedArray = [...prevCategories];
-        const firstItem = rotatedArray.shift(); // Pehla element nikaala
-        rotatedArray.push(firstItem); // Usay end mein daal diya
+        const firstItem = rotatedArray.shift(); 
+        rotatedArray.push(firstItem); 
         return rotatedArray;
       });
-    }, 3000); // Har 3 second baad rotate hoga
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -45,7 +45,7 @@ const FeaturedCategories = () => {
               <div 
                 className="d-flex align-items-center p-3"
                 style={{
-                  // Design bilkul wahi rakha hai, index 0 hamesha highlight rahega
+                
                   border: index === 0 ? '2px solid #1A1A1A' : '1px solid #e0e0e0',
                   borderRadius: '8px',
                   backgroundColor: '#fff',
@@ -78,7 +78,7 @@ const FeaturedCategories = () => {
 
         {/* Rotation Indicators (Dots) */}
         <div className="mt-5 d-flex justify-content-center gap-2 align-items-center">
-          {/* Pehla dot hamesha active rahega kyunke rotation cards ki ho rahi hai */}
+        
           {categories.map((_, index) => (
             <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px' }}>
               {index === 0 ? (
