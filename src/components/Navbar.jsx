@@ -111,11 +111,11 @@ function Navbar() {
             <span>+923286561587</span>
           </div>
 
-          <div style={styles.userIconCircle} onClick={() => setIsModalOpen(true)}>
+          <div  className="custom-btn-outline" style={styles.userIconCircle} onClick={() => setIsModalOpen(true)}>
             <FaRegUser size={18} />
           </div>
 
-          <button className="btn btn-outline-dark rounded-pill" style={{borderColor: "#2C4B40", color: "#2C4B40", padding: "8px 22px"}}>
+          <button className="btn custom-btn-outline rounded-pill " style={{borderColor: "#2C4B40", color: "#2C4B40", padding: "8px 22px"}}>
             Add Property
           </button>
         </div>
