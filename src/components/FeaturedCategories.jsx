@@ -28,10 +28,10 @@ const FeaturedCategories = () => {
             <div key={item.id} className="col-6 col-md-3">
               <div 
                 className="d-flex align-items-center p-3"
-                onClick={() => setActiveIndex(index)} // Click par highlight change hoga
+                onClick={() => setActiveIndex(index)}
                 style={{
                   cursor: 'pointer',
-                  // Index activeIndex ke mutabiq highlight hoga
+                  
                   border: index === activeIndex ? '2px solid #1A1A1A' : '1px solid #e0e0e0',
                   borderRadius: '8px',
                   backgroundColor: '#fff',
