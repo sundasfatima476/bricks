@@ -14,7 +14,7 @@ import img317 from '../assets/images/317.png';
 import img322 from '../assets/images/322.png';
 
 const RecentProperties = () => {
-  // Active index state jo batayegi kaunsa card highlight hona hai
+  
   const [activeIndex, setActiveIndex] = useState(0);
 
   const properties = [
@@ -37,7 +37,7 @@ const RecentProperties = () => {
             <div key={item.id} className="col-12 col-md-6 col-lg-3">
               <div 
                 className="card h-100 border-0 shadow-sm" 
-                onClick={() => setActiveIndex(index)} // Card click par bhi highlight change hoga
+                onClick={() => setActiveIndex(index)} 
                 style={{ 
                   borderRadius: '15px', 
                   overflow: 'hidden',
