@@ -1,28 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaHome, FaBuilding, FaBriefcase, FaUsers } from 'react-icons/fa';
 
 const FeaturedCategories = () => {
-  
-  const [categories, setCategories] = useState([
+  // State for active highlight
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const categories = [
     { id: 1, name: 'Modern Villa', count: '10 Properties', icon: <FaHome /> },
     { id: 2, name: 'Apartment', count: '2 Properties', icon: <FaBuilding /> },
     { id: 3, name: 'Office', count: '3 Properties', icon: <FaBriefcase /> },
     { id: 4, name: 'Single Family', count: '5 Properties', icon: <FaUsers /> },
-  ]);
-
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCategories((prevCategories) => {
-        const rotatedArray = [...prevCategories];
-        const firstItem = rotatedArray.shift(); 
-        rotatedArray.push(firstItem); 
-        return rotatedArray;
-      });
-    }, 3000); 
-
-    return () => clearInterval(interval);
-  }, []);
+  ];
 
   return (
     <section className="py-5" style={{ backgroundColor: '#E9E9E9' }}>
@@ -34,32 +22,31 @@ const FeaturedCategories = () => {
           <p className="text-muted" style={{ fontSize: '1rem' }}>Lorem ipsum dolor sit amet</p>
         </div>
 
-        {/* Categories Grid */}
+        {/* Categories Grid - Static Positions */}
         <div className="row g-3 mt-2">
           {categories.map((item, index) => (
-            <div 
-              key={item.id} 
-              className="col-6 col-md-3" 
-              style={{ transition: 'all 0.5s ease-in-out' }} // Smooth rotation effect
-            >
+            <div key={item.id} className="col-6 col-md-3">
               <div 
                 className="d-flex align-items-center p-3"
+                onClick={() => setActiveIndex(index)} // Click par highlight change hoga
                 style={{
-                
-                  border: index === 0 ? '2px solid #1A1A1A' : '1px solid #e0e0e0',
+                  cursor: 'pointer',
+                  // Index activeIndex ke mutabiq highlight hoga
+                  border: index === activeIndex ? '2px solid #1A1A1A' : '1px solid #e0e0e0',
                   borderRadius: '8px',
                   backgroundColor: '#fff',
                   minHeight: '70px',
-                  transform: index === 0 ? 'scale(1.05)' : 'scale(1)',
+                  transform: index === activeIndex ? 'scale(1.05)' : 'scale(1)',
                   transition: '0.4s ease-in-out',
-                  boxShadow: index === 0 ? '0 4px 12px rgba(0,0,0,0.08)' : 'none'
+                  boxShadow: index === activeIndex ? '0 4px 12px rgba(0,0,0,0.08)' : 'none'
                 }}
               >
                 <div 
                   style={{ 
-                    color: index === 0 ? '#1A1A1A' : '#ccc', 
+                    color: index === activeIndex ? '#1A1A1A' : '#ccc', 
                     fontSize: '22px', 
-                    minWidth: '30px' 
+                    minWidth: '30px',
+                    transition: '0.3s'
                   }} 
                   className="me-3"
                 >
@@ -76,12 +63,15 @@ const FeaturedCategories = () => {
           ))}
         </div>
 
-        {/* Rotation Indicators (Dots) */}
+        {/* Indicators (Dots) - Click to Change Highlight */}
         <div className="mt-5 d-flex justify-content-center gap-2 align-items-center">
-        
           {categories.map((_, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px' }}>
-              {index === 0 ? (
+            <div 
+              key={index} 
+              onClick={() => setActiveIndex(index)} 
+              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px' }}
+            >
+              {index === activeIndex ? (
                 <div style={{ 
                   width: '24px', height: '24px', borderRadius: '50%', 
                   border: '1px solid #333', display: 'flex', 
