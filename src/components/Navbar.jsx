@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaPhoneAlt, FaRegUser } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link for navigation without page reload
 import RegistrationForm from "./registrationForm";
 
 function Navbar() {
+  // State to control the registration modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // --- Inline Styles ---
@@ -18,7 +20,7 @@ function Navbar() {
       display: "flex",
       alignItems: "center",
       gap: "8px",
-      textDecoration: "none",
+      textDecoration: "none", // Remove underline from brand link
     },
     navLink: {
       color: "#2C4B40",
@@ -29,6 +31,7 @@ function Navbar() {
       gap: "4px",
       padding: "10px 15px",
       transition: "0.3s",
+      textDecoration: "none", // Remove underline from navigation links
     },
     dropdownMenu: {
       border: "none",
@@ -43,6 +46,7 @@ function Navbar() {
       fontSize: "14px",
       borderRadius: "6px",
       transition: "0.2s",
+      textDecoration: "none",
     },
     userIconCircle: {
       width: "38px",
@@ -53,10 +57,15 @@ function Navbar() {
       alignItems: "center",
       justifyContent: "center",
       color: "#2C4B40",
-      cursor: "pointer"
+      cursor: "pointer" // Show hand cursor on hover
     }
   };
 
+  /**
+   * Helper function to render dropdown menus
+   * @param {string} title - The title of the dropdown
+   * @param {Array} items - Array of menu items to display in dropdown
+   */
   const renderDropdown = (title, items) => (
     <li className="nav-item dropdown custom-dropdown">
       <a className="nav-link dropdown-toggle" href="#" style={styles.navLink}>
@@ -74,28 +83,36 @@ function Navbar() {
 
   return (
     <>
+      {/* Custom CSS for hover effects and animations */}
       <style>
         {`
           @media (min-width: 992px) {
-            /* Navbar Link Hover - Green Color */
+            /* Navbar Link Hover - Green Color with opacity change */
             .custom-dropdown:hover > .nav-link {
               color: #2C4B40 !important; 
               opacity: 0.7;
             }
             
-            /* Show Dropdown on Hover */
+            /* Show Dropdown on Hover with fade-in animation */
             .custom-dropdown:hover > .dropdown-menu {
               display: block;
               animation: fadeInUp 0.3s ease;
             }
           }
 
-          /* Dropdown Item Hover Effect */
+          /* Dropdown Item Hover Effect - Green background with white text */
           .custom-item:hover {
             background-color: #2C4B40 !important;
             color: #ffffff !important;
           }
 
+          /* Contact Link Hover Effect */
+          .contact-link:hover {
+            opacity: 0.7;
+            transition: 0.3s;
+          }
+
+          /* Fade-in animation for dropdown menus */
           @keyframes fadeInUp {
             from {
               opacity: 0;
@@ -109,38 +126,55 @@ function Navbar() {
         `}
       </style>
 
+      {/* Main Navigation Bar */}
       <nav className="navbar navbar-expand-lg" style={styles.navbar}>
         <div className="container">
-          <a className="navbar-brand fw-bold" href="#" style={styles.brand}>
+          {/* Brand/Logo - Links to home page */}
+          <Link className="navbar-brand fw-bold" to="/" style={styles.brand}>
+            {/* House icon SVG */}
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 21h18M3 7l9-4 9 4v14H3V7z" /><path d="M9 21V9h6v12" />
             </svg>
             Bricks&Keys
-          </a>
+          </Link>
 
+          {/* Navigation Menu - Collapsible on mobile */}
           <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
             <ul className="navbar-nav gap-3">
+              {/* Dropdown menus */}
               {renderDropdown("Home", ["Main Page", "Modern Home", "Classic Style"])}
               {renderDropdown("Listings", ["Grid Layout", "List Layout", "Map View"])}
               {renderDropdown("Members", ["Our Agents", "Agencies", "Packages"])}
               {renderDropdown("Blog", ["Latest News", "Real Estate Tips"])}
               {renderDropdown("Pages", ["About Us", "Our Services", "FAQ", "Pricing"])}
+              
+              {/* Contact Link - Uses React Router Link for navigation */}
               <li className="nav-item">
-                <a className="nav-link" href="#" style={styles.navLink}>Contact</a>
+                <Link 
+                  to="/contact" 
+                  className="nav-link contact-link" 
+                  style={styles.navLink}
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
 
+          {/* Right side elements - Phone, User icon, Add Property button */}
           <div className="d-flex align-items-center gap-4 ms-auto">
+            {/* Phone number - Visible only on desktop */}
             <div className="d-none d-lg-flex align-items-center gap-2" style={{color: "#2C4B40", fontWeight: "600"}}>
               <FaPhoneAlt size={14} />
               <span>+923286561587</span>
             </div>
 
+            {/* User icon - Opens registration modal on click */}
             <div style={styles.userIconCircle} onClick={() => setIsModalOpen(true)}>
               <FaRegUser size={18} />
             </div>
 
+            {/* Add Property button */}
             <button className="btn rounded-pill" style={{border: "1px solid #2C4B40", color: "#2C4B40", padding: "8px 22px", fontWeight: "500"}}>
               Add Property
             </button>
@@ -148,6 +182,7 @@ function Navbar() {
         </div>
       </nav>
 
+      {/* Registration Modal Component */}
       <RegistrationForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );

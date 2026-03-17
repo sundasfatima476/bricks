@@ -719,8 +719,11 @@ const PropertyDetail = () => {
                 <i className="bi bi-calendar-check me-2"></i>
                 Schedule a Tour
               </button>
-              <button 
-                className="btn w-100 py-3 text-success fw-bold"
+              
+              {/* Contact Agent Button - Updated with Link */}
+              <Link 
+                to="/contact"
+                className="btn w-100 py-3 text-success fw-bold text-decoration-none d-block text-center"
                 style={{ 
                   backgroundColor: "transparent", 
                   border: "2px solid #2d6a4f",
@@ -729,7 +732,7 @@ const PropertyDetail = () => {
               >
                 <i className="bi bi-envelope me-2"></i>
                 Contact Agent
-              </button>
+              </Link>
             </div>
 
             {/* Location Card */}
