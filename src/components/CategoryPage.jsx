@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';  // Import useState for favorite functionality
 import { useParams, useNavigate } from 'react-router-dom';
 
 const CategoryPage = () => {
-  const { categoryType } = useParams(); 
-  const navigate = useNavigate();
+  const { categoryType } = useParams(); // Gets category from URL (e.g., "villas" from /category/villas)
+  const navigate = useNavigate(); // For navigation (back button)
 
   // Data Source: Expanded property list with valid high-quality Unsplash images
   const propertyData = [
@@ -23,60 +23,96 @@ const CategoryPage = () => {
     { id: 11, type: 'townhouses', title: 'Classic Brick Townhouse', price: '$480,000', location: 'Boston', img: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=600' },
   ];
 
+  // State for favorites - stores favorite status for each property
+  // Format: { 1: true, 2: false, 3: true } (propertyId: boolean)
+  const [favorites, setFavorites] = useState({});
+
+  // Function to toggle favorite status when heart icon is clicked
+  const toggleFavorite = (propertyId) => {
+    // Takes previous state and reverses the boolean value for clicked property
+    setFavorites(prevState => ({
+      ...prevState, // Keep all other properties as they were
+      [propertyId]: !prevState[propertyId] // Toggle this specific property
+    }));
+  };
+
   // Filter properties based on the URL parameter
+  // Shows only properties matching current category (villas/apartments/etc)
   const filteredList = propertyData.filter(item => item.type === categoryType);
 
   return (
-    <div className="container" style={{ marginTop: '10px', marginBottom: '100px', minHeight: '80vh' }}>
+     <div className="container" style={{ marginTop: '10px', marginBottom: '100px', minHeight: '80vh' }}>
       
       {/* Navigation: Back Button with Slide Animation */}
       <button 
         className="btn mb-4 d-flex align-items-center gap-2 back-btn-anim" 
-        onClick={() => navigate('/')}
+        onClick={() => navigate('/')} // Navigates to home page
       >
         <i className="bi bi-arrow-left"></i> Back to Home
       </button>
 
       {/* Header Section with Entrance Fade */}
       <div className="mb-5 text-center reveal-header">
-        <span className="category-tag-anim mb-2 d-inline-block fst-italic">
+        {/* Category tag with animation */}
+         <span className="category-tag-anim mb-2 d-inline-block fst-italic">
           Explore Our Premium {categoryType}
         </span>
+        {/* Main heading - dynamically shows category name */}
         <h2 className="fw-bold text-capitalize display-5 main-heading">
           {categoryType} Collection
         </h2>
+        {/* Decorative line under heading */}
         <div className="heading-line mx-auto mt-2"></div>
       </div>
 
+      {/* Property Grid - Responsive: 1 col mobile, 2 cols tablet, 3 cols desktop */}
       <div className="row g-4">
         {filteredList.length > 0 ? (
+          // Map through filtered properties and create cards
           filteredList.map((item, index) => (
             <div key={item.id} className="col-md-6 col-lg-4">
+              {/* Property Card with staggered animation delay */}
               <div 
                 className="card h-100 border-0 property-card-v2 shadow-sm" 
-                style={{ animationDelay: `${index * 0.15}s` }}
+                style={{ animationDelay: `${index * 0.15}s` }} // Each card animates with delay
               >
-                {/* Visuals: Image Wrapper with Shine and Zoom effects */}
+                {/* Image Section with Hover Effects */}
                 <div className="img-wrapper position-relative">
+                  {/* Property Image */}
                   <img src={item.img} className="card-img-top property-img-v2" alt={item.title} />
+                  {/* Price Badge overlayed on image */}
                   <div className="price-overlay shadow-lg">{item.price}</div>
+                  {/* Shine effect that slides on hover */}
                   <div className="img-shine"></div>
                 </div>
 
-                {/* Information: Property details and action buttons */}
+                {/* Property Details Section */}
                 <div className="card-body p-4 text-start">
+                  {/* Property Title */}
                   <h5 className="fw-bold mb-2 card-title-anim">{item.title}</h5>
+                  {/* Location with icon */}
                   <p className="text-muted mb-4 d-flex align-items-center gap-2">
                     <i className="bi bi-geo-alt-fill loc-icon"></i> {item.location}
                   </p>
                   
+                  {/* Action Buttons Section */}
                   <div className="pt-3 border-top d-flex justify-content-between align-items-center">
+                    {/* Explore Details Button */}
                     <button className="btn details-btn-v2 px-4 rounded-pill">
                       Explore Details
                     </button>
-                    {/* Interaction: Soft Premium Heart Circle */}
-                    <div className="heart-circle shadow-sm">
-                       <i className="bi bi-heart-fill"></i>
+                    
+                    {/* Favorite Heart Icon - Clickable */}
+                    <div 
+                      // Dynamic class: adds 'favorite-active' when property is favorited
+                      className={`heart-circle ${favorites[item.id] ? 'favorite-active' : ''}`}
+                      onClick={() => toggleFavorite(item.id)} // Toggle favorite on click
+                      role="button"  // Accessibility: indicates this is a button
+                      tabIndex={0}    // Makes it focusable with keyboard
+                      onKeyPress={(e) => e.key === 'Enter' && toggleFavorite(item.id)} // Enter key support
+                    >
+                      {/* Dynamic icon: filled heart if favorite, empty heart if not */}
+                      <i className={`bi ${favorites[item.id] ? 'bi-heart-fill' : 'bi-heart'}`}></i>
                     </div>
                   </div>
                 </div>
@@ -84,7 +120,7 @@ const CategoryPage = () => {
             </div>
           ))
         ) : (
-          /* Fallback: UI when no properties match the category */
+          /* Fallback UI: Displayed when no properties match the category */
           <div className="col-12 text-center py-5 no-data-box shadow-sm">
              <i className="bi bi-search mb-3 d-block" style={{fontSize: '3rem', opacity: 0.5}}></i>
              <h4 className="fw-bold">No {categoryType} Found</h4>
@@ -93,11 +129,21 @@ const CategoryPage = () => {
         )}
       </div>
 
+      {/* Optional Favorites Counter - Shows only if at least one favorite exists */}
+      {Object.values(favorites).filter(Boolean).length > 0 && (
+        <div className="favorites-bar mt-5 p-3 rounded-pill text-center">
+          <i className="bi bi-heart-fill me-2" style={{color: '#ff4d4f'}}></i>
+          You have {Object.values(favorites).filter(Boolean).length} favorite properties
+        </div>
+      )}
+
+      {/* CSS Styles */}
       <style>{`
+        /* CSS Variables for consistent theming */
         :root {
-          --brand-green: #1a3c34; /* Custom Dark Green from user image */
-          --brand-light: #f1f8f6;
-          --soft-red: #ff4d4f;
+          --brand-green: #1a3c34; /* Primary brand color - dark green */
+          --brand-light: #f1f8f6; /* Light green background */
+          --soft-red: #ff4d4f;    /* Red for heart icon */
         }
 
         /* Page Loading Animations */
@@ -115,13 +161,16 @@ const CategoryPage = () => {
           transition: 0.5s all ease;
         }
 
+        /* Card hover effect - lifts up */
         .property-card-v2:hover {
           transform: translateY(-12px);
           box-shadow: 0 25px 50px rgba(26, 60, 52, 0.15) !important;
         }
 
+        /* Image wrapper to contain zoom effect */
         .img-wrapper { overflow: hidden; position: relative; }
 
+        /* Property image styling */
         .property-img-v2 {
           height: 260px;
           width: 100%;
@@ -129,6 +178,7 @@ const CategoryPage = () => {
           transition: transform 1.2s ease;
         }
 
+        /* Image zoom on card hover */
         .property-card-v2:hover .property-img-v2 {
           transform: scale(1.1) rotate(1deg);
         }
@@ -139,10 +189,12 @@ const CategoryPage = () => {
           background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
           transform: skewX(-25deg);
           transition: 0.75s;
-          pointer-events: none;
+          pointer-events: none; /* Allows clicking through the shine */
         }
+        /* Shine slides across image on hover */
         .property-card-v2:hover .img-shine { left: 125%; }
 
+        /* Price overlay on image */
         .price-overlay {
           position: absolute; bottom: 15px; left: 15px;
           background: var(--brand-green); color: white;
@@ -165,6 +217,7 @@ const CategoryPage = () => {
           color: white;
         }
 
+        /* Back button styling */
         .back-btn-anim {
           border: 1px solid var(--brand-green);
           color: var(--brand-green);
@@ -172,6 +225,7 @@ const CategoryPage = () => {
           transition: 0.3s ease; font-weight: 600;
         }
 
+        /* Back button hover - text shifts right */
         .back-btn-anim:hover {
           background: var(--brand-green); color: white;
           padding-left: 35px;
@@ -188,6 +242,7 @@ const CategoryPage = () => {
 
         .main-heading { color: var(--brand-green); }
 
+        /* Decorative line under heading */
         .heading-line {
           width: 60px; height: 4px;
           background: var(--brand-green);
@@ -196,7 +251,7 @@ const CategoryPage = () => {
 
         .loc-icon { color: var(--brand-green); }
 
-        /* Premium Heart Icon Circle Styling */
+        /* Heart Icon Circle Styling */
         .heart-circle {
           width: 42px; height: 42px; background: #f9fbfb;
           display: flex; align-items: center; justify-content: center;
@@ -205,6 +260,7 @@ const CategoryPage = () => {
           border: 1px solid #edf2f1;
         }
 
+        /* Heart hover effect */
         .heart-circle:hover { 
           background: #fff1f0; 
           color: var(--soft-red); 
@@ -213,6 +269,30 @@ const CategoryPage = () => {
           box-shadow: 0 5px 15px rgba(255, 77, 79, 0.15);
         }
 
+        /* Active/Favorite State - when heart is selected */
+        .heart-circle.favorite-active {
+          background: #fff1f0;
+          color: var(--soft-red);
+          border-color: #ff4d4f;
+        }
+
+        /* Remove rotation on hover when already active */
+        .heart-circle.favorite-active:hover {
+          transform: scale(1.15) rotate(0deg);
+        }
+
+        /* Favorites Bar - shows total count */
+        .favorites-bar {
+          background: var(--brand-light);
+          border: 1px solid #d1e2dd;
+          color: var(--brand-green);
+          font-weight: 600;
+          max-width: 400px;
+          margin: 0 auto;
+          box-shadow: 0 5px 15px rgba(26, 60, 52, 0.1);
+        }
+
+        /* No data fallback styling */
         .no-data-box {
           background: #fdfdfd;
           border: 2px dashed #d1e2dd;
