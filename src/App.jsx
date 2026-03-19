@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css'; // Bootstrap Icons import
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Layout Components
 import Navbar from './components/Navbar';
@@ -20,12 +20,11 @@ import PropertiesByArea from './components/PropertiesByArea.jsx';
 import RecentArticles from './components/RecentArticles.jsx';
 import FindHomeCTA from './components/FindHomeCTA.jsx';
 
-// Contact Page Component
+// Page Components
 import Contact from './components/Contact.jsx';
-
-// Detail Page Components
 import CityDetailPage from './components/CityDetailPage';
 import PropertyDetail from './components/PropertyDetail'; 
+import CategoryPage from './components/CategoryPage'; // Imported separately now
 
 // Global Styles
 import './App.css';
@@ -34,11 +33,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Navbar is placed outside Routes so it appears on every page */}
         <Navbar />
 
         <Routes>
-          {/* Main Route: Displays the landing page content */}
+          {/* Main Route */}
           <Route 
             path="/" 
             element={
@@ -58,18 +56,20 @@ function App() {
             } 
           />
 
-          {/* City Detail Route: Displays properties in a specific city */}
+          {/* Dynamic Category Route */}
+          <Route path="/category/:categoryType" element={<CategoryPage />} />
+
+          {/* City Detail Route */}
           <Route path="/properties/:slug" element={<CityDetailPage />} />
           
-          {/* Property Detail Route: Displays details of a specific property */}
+          {/* Property Detail Route */}
           <Route path="/properties/:citySlug/:propertySlug" element={<PropertyDetail />} />
           
-          {/* Contact Page Route: Displays the contact page */}
+          {/* Contact Page Route */}
           <Route path="/contact" element={<Contact />} />
           
         </Routes>
 
-        {/* Footer is placed outside Routes so it remains visible on all pages */}
         <FooterSection />
       </div>
     </Router>
