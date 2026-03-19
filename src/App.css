@@ -66,3 +66,8 @@
     color: #ffffff !important;
     border: solid 1px #000000;
 }
+.category-tag-anim {
+    font-family: 'some-weird-font' !important; /* Isay hatayein */
+    /* animation properties yahan rehne dein */
+    font-weight: 500px !important;
+}

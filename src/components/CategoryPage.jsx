@@ -27,7 +27,7 @@ const CategoryPage = () => {
   const filteredList = propertyData.filter(item => item.type === categoryType);
 
   return (
-    <div className="container" style={{ marginTop: '120px', marginBottom: '100px', minHeight: '80vh' }}>
+    <div className="container" style={{ marginTop: '10px', marginBottom: '100px', minHeight: '80vh' }}>
       
       {/* Navigation: Back Button with Slide Animation */}
       <button 
@@ -39,7 +39,7 @@ const CategoryPage = () => {
 
       {/* Header Section with Entrance Fade */}
       <div className="mb-5 text-center reveal-header">
-        <span className="category-tag-anim mb-2 d-inline-block">
+        <span className="category-tag-anim mb-2 d-inline-block fst-italic">
           Explore Our Premium {categoryType}
         </span>
         <h2 className="fw-bold text-capitalize display-5 main-heading">
@@ -72,7 +72,7 @@ const CategoryPage = () => {
                   
                   <div className="pt-3 border-top d-flex justify-content-between align-items-center">
                     <button className="btn details-btn-v2 px-4 rounded-pill">
-                      EXplore Details
+                      Explore Details
                     </button>
                     {/* Interaction: Soft Premium Heart Circle */}
                     <div className="heart-circle shadow-sm">
