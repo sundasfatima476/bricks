@@ -1,92 +1,101 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Required for navigation
 import { FaHome, FaBuilding, FaBriefcase, FaUsers } from 'react-icons/fa';
 
 const FeaturedCategories = () => {
-  // State for active highlight
+  // Hook to handle programmatic navigation
+  const navigate = useNavigate();
+  
+  // State to track which category is currently highlighted
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Data Source: Paths updated to match the '/category/:categoryType' route in App.jsx
   const categories = [
-    { id: 1, name: 'Modern Villa', count: '10 Properties', icon: <FaHome /> },
-    { id: 2, name: 'Apartment', count: '2 Properties', icon: <FaBuilding /> },
-    { id: 3, name: 'Office', count: '3 Properties', icon: <FaBriefcase /> },
-    { id: 4, name: 'Single Family', count: '5 Properties', icon: <FaUsers /> },
+    { id: 1, name: 'Modern Villa', count: '10 Properties', icon: <FaHome />, path: '/category/villas' },
+    { id: 2, name: 'Apartment', count: '25 Properties', icon: <FaBuilding />, path: '/category/apartments' },
+    { id: 3, name: 'Office Space', count: '12 Properties', icon: <FaBriefcase />, path: '/category/offices' },
+    { id: 4, name: 'Townhouse', count: '8 Properties', icon: <FaUsers />, path: '/category/townhouses' },
   ];
 
+  // Function to handle selection and redirection
+  const handleSelectCategory = (index, path) => {
+    setActiveIndex(index);
+    
+    // Smooth navigation with a slight delay for the scale animation
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
+  };
+
   return (
-    <section className="py-5" style={{ backgroundColor: '#E9E9E9' }}>
+    <section className="py-5" style={{ backgroundColor: '#F9FAFB' }}>
       <div className="container text-center">
+        {/* Header Section */}
         <div className="mb-5">
-          <h2 className="fw-bold" style={{ color: '#1A1A1A', fontSize: '2rem' }}>
+          <h2 className="fw-bold" style={{ color: '#111', fontSize: '2.2rem' }}>
             Featured Categories
           </h2>
-          <p className="text-muted" style={{ fontSize: '1rem' }}>Lorem ipsum dolor sit amet</p>
+          <p className="text-muted">Find your perfect home based on your preferred property type.</p>
         </div>
 
-        {/* Categories Grid - Static Positions */}
-        <div className="row g-3 mt-2">
+        {/* Categories Grid */}
+        <div className="row g-4 mt-2">
           {categories.map((item, index) => (
             <div key={item.id} className="col-6 col-md-3">
               <div 
                 className="d-flex align-items-center p-3"
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleSelectCategory(index, item.path)}
                 style={{
                   cursor: 'pointer',
-                  
-                  border: index === activeIndex ? '2px solid #1A1A1A' : '1px solid #e0e0e0',
-                  borderRadius: '8px',
+                  border: index === activeIndex ? '2px solid #1A1A1A' : '1px solid #E5E7EB',
+                  borderRadius: '12px',
                   backgroundColor: '#fff',
-                  minHeight: '70px',
-                  transform: index === activeIndex ? 'scale(1.05)' : 'scale(1)',
-                  transition: '0.4s ease-in-out',
-                  boxShadow: index === activeIndex ? '0 4px 12px rgba(0,0,0,0.08)' : 'none'
+                  minHeight: '80px',
+                  // Visual lift effect when active
+                  transform: index === activeIndex ? 'translateY(-5px)' : 'translateY(0)',
+                  transition: 'all 0.3s ease-in-out',
+                  boxShadow: index === activeIndex ? '0 10px 15px rgba(0,0,0,0.1)' : 'none'
                 }}
               >
+                {/* Icon Container */}
                 <div 
                   style={{ 
-                    color: index === activeIndex ? '#1A1A1A' : '#ccc', 
-                    fontSize: '22px', 
-                    minWidth: '30px',
+                    color: index === activeIndex ? '#1A1A1A' : '#9CA3AF', 
+                    fontSize: '24px', 
                     transition: '0.3s'
                   }} 
                   className="me-3"
                 >
                   {item.icon}
                 </div>
+
+                {/* Text Content */}
                 <div className="text-start">
-                  <div style={{ color: '#000', fontSize: '15px', fontWeight: '500', lineHeight: '1.3' }}>
+                  <div style={{ color: '#111', fontSize: '16px', fontWeight: '600' }}>
                     {item.name}
                   </div>
-                  <div style={{ color: '#888', fontSize: '13px' }}>{item.count}</div>
+                  <div style={{ color: '#6B7280', fontSize: '13px' }}>{item.count}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Indicators (Dots) - Click to Change Highlight */}
+        {/* Pagination/Indicator Dots */}
         <div className="mt-5 d-flex justify-content-center gap-2 align-items-center">
           {categories.map((_, index) => (
             <div 
               key={index} 
               onClick={() => setActiveIndex(index)} 
-              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px' }}
+              style={{ cursor: 'pointer', padding: '5px' }}
             >
-              {index === activeIndex ? (
-                <div style={{ 
-                  width: '24px', height: '24px', borderRadius: '50%', 
-                  border: '1px solid #333', display: 'flex', 
-                  alignItems: 'center', justifyContent: 'center' 
-                }}>
-                  <span style={{ width: '8px', height: '8px', backgroundColor: '#1A1A1A', borderRadius: '50%' }}></span>
-                </div>
-              ) : (
-                <span 
-                  style={{ 
-                    width: '8px', height: '8px', backgroundColor: '#D9D9D9', 
-                    borderRadius: '50%' 
-                  }}
-                ></span>
-              )}
+              <div style={{ 
+                width: index === activeIndex ? '10px' : '8px', 
+                height: index === activeIndex ? '10px' : '8px', 
+                backgroundColor: index === activeIndex ? '#1A1A1A' : '#D1D5DB', 
+                borderRadius: '50%',
+                transition: '0.3s'
+              }}></div>
             </div>
           ))}
         </div>
