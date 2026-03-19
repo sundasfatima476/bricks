@@ -2,14 +2,11 @@ import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
 const CityDetailPage = () => {
-  // Get the city slug from the URL parameters (e.g., "new-york" from /properties/new-york)
+
   const { slug } = useParams();
   
-  // Hook for programmatic navigation
   const navigate = useNavigate();
 
-  // Complete data for all cities with their properties
-  // Each city has a unique slug, name, description, banner image, and array of properties
   const cityData = {
     // New York City Data
     "new-york": {
@@ -453,7 +450,7 @@ const CityDetailPage = () => {
     }
   };
 
-  // Get the current city data based on the URL slug
+ 
   const currentCity = cityData[slug];
 
   // If city not found, show error message with link back to home

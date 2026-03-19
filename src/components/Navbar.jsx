@@ -170,12 +170,12 @@ function Navbar() {
             </div>
 
             {/* User icon - Opens registration modal on click */}
-            <div style={styles.userIconCircle} onClick={() => setIsModalOpen(true)}>
+            <div style={styles.userIconCircle} onClick={() => setIsModalOpen(true)} className="custom-btn-outline">
               <FaRegUser size={18} />
             </div>
 
             {/* Add Property button */}
-            <button className="btn rounded-pill" style={{border: "1px solid #2C4B40", color: "#2C4B40", padding: "8px 22px", fontWeight: "500"}}>
+            <button className="btn rounded-pill  custom-btn-outline" style={{border: "1px solid #2C4B40", color: "#2C4B40", padding: "8px 22px", fontWeight: "500"}}>
               Add Property
             </button>
           </div>

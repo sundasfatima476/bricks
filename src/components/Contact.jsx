@@ -361,7 +361,7 @@ const Contact = () => {
                     <div className="col-12 mb-4">
                       <label className="form-label fw-semibold">Message</label>
                       <div className="input-group">
-                        <span className="input-group-text bg-light border-0" style={{ alignItems: "flex-start" }}>
+                        <span className="input-group-text bg-light border-0 mt-2" style={{ alignItems: "flex-start" }}>
                           <i className="bi bi-chat-dots" style={{ color: "#2d6a4f" }}></i>
                         </span>
                         <textarea

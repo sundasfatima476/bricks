@@ -1,6 +1,44 @@
 // PropertyDetail.jsx
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+// This will almost always fail or be unnecessary
+import A1 from "../assets/images/A1.jpeg";
+import A2 from "../assets/images/A2.jpeg";
+import A3 from "../assets/images/A3.jpeg";
+import A4 from "../assets/images/A4.jpeg";
+import A5 from "../assets/images/A5.jpeg";
+import A6 from "../assets/images/A6.jpeg";
+import A7 from "../assets/images/A7.jpg";
+import A8 from "../assets/images/A8.jpeg";
+import A9 from "../assets/images/A9.jpeg";
+import A10 from "../assets/images/A10.jpeg";
+import A11 from "../assets/images/A11.jpeg";
+import A12 from "../assets/images/A12.jpeg";
+import A13 from "../assets/images/A13.jpeg";
+import A14 from "../assets/images/A14.jpeg";
+import A15 from "../assets/images/A15.jpeg";
+import A16 from "../assets/images/A16.jpeg";
+import A17 from "../assets/images/A17.jpeg";
+import A18 from "../assets/images/A18.jpeg";
+import A19 from "../assets/images/A19.jpeg";
+import A20 from "../assets/images/A20.jpeg";
+import A21 from "../assets/images/A21.jpeg";
+import A22 from "../assets/images/A22.jpeg";
+import A23 from "../assets/images/A23.jpeg";
+import A24 from "../assets/images/A24.jpeg";
+import A25 from "../assets/images/A25.jpg";
+import A26 from "../assets/images/A26.jpg";
+import A27 from "../assets/images/A27.jpeg";
+import A28 from "../assets/images/A28.jpeg";
+import A29 from "../assets/images/A29.jpeg";
+import A30 from "../assets/images/A30.jpeg";
+import A31 from "../assets/images/A31.jpeg";
+import A32 from "../assets/images/A32.jpeg";
+import A33 from "../assets/images/A33.jpeg";
+import A34 from "../assets/images/A34.jpeg";
+import A35 from "../assets/images/A35.jpg";
+import A36 from "../assets/images/A36.jpeg";
+
 
 const PropertyDetail = () => {
   const { citySlug, propertySlug } = useParams();
@@ -17,7 +55,7 @@ const PropertyDetail = () => {
           title: "Manhattan Luxury Loft", 
           price: "$1,200,000", 
           slug: "manhattan-luxury-loft",
-          img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=600",
+          img: "A1.jpeg",
           bedrooms: 3, 
           bathrooms: 2, 
           area: "2,500 sq ft", 
@@ -31,7 +69,7 @@ const PropertyDetail = () => {
           title: "Brooklyn Modern Condo", 
           price: "$850,000", 
           slug: "brooklyn-modern-condo",
-          img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600",
+          img: "A2.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,200 sq ft", 
@@ -45,7 +83,7 @@ const PropertyDetail = () => {
           title: "Central Park Penthouse", 
           price: "$3,500,000", 
           slug: "central-park-penthouse",
-          img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600",
+          img: "A3.jpeg",
           bedrooms: 4, 
           bathrooms: 3, 
           area: "3,800 sq ft", 
@@ -59,7 +97,7 @@ const PropertyDetail = () => {
           title: "Queens Family Home", 
           price: "$720,000", 
           slug: "queens-family-home",
-          img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=600",
+          img: "A4.jpeg",
           bedrooms: 4, 
           bathrooms: 3, 
           area: "2,200 sq ft", 
@@ -80,7 +118,7 @@ const PropertyDetail = () => {
           title: "La Jolla Villa", 
           price: "$2,100,000", 
           slug: "la-jolla-villa",
-          img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600",
+          img: "A5.jpeg",
           bedrooms: 4, 
           bathrooms: 4, 
           area: "3,200 sq ft", 
@@ -94,7 +132,7 @@ const PropertyDetail = () => {
           title: "Oceanfront Cottage", 
           price: "$1,450,000", 
           slug: "oceanfront-cottage",
-          img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=600",
+          img: "A6.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,500 sq ft", 
@@ -108,7 +146,7 @@ const PropertyDetail = () => {
           title: "Downtown Studio", 
           price: "$450,000", 
           slug: "downtown-studio",
-          img: "https://images.unsplash.com/photo-1536376074432-a228d217929a?q=80&w=600",
+          img: "A7.jpg",
           bedrooms: 1, 
           bathrooms: 1, 
           area: "650 sq ft", 
@@ -122,7 +160,7 @@ const PropertyDetail = () => {
           title: "Mission Valley Condo", 
           price: "$550,000", 
           slug: "mission-valley-condo",
-          img: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=600",
+          img: "A8.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,100 sq ft", 
@@ -143,7 +181,7 @@ const PropertyDetail = () => {
           title: "Scottsdale Manor", 
           price: "$1,250,000", 
           slug: "scottsdale-manor",
-          img: "https://images.unsplash.com/photo-1472224371017-08207f84aaae?q=80&w=600",
+          img: "A9.jpeg",
           bedrooms: 5, 
           bathrooms: 4, 
           area: "4,000 sq ft", 
@@ -157,7 +195,7 @@ const PropertyDetail = () => {
           title: "Phoenix Desert Villa", 
           price: "$890,000", 
           slug: "phoenix-desert-villa",
-          img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=600",
+          img: "A10.jpeg",
           bedrooms: 3, 
           bathrooms: 3, 
           area: "2,800 sq ft", 
@@ -171,7 +209,7 @@ const PropertyDetail = () => {
           title: "Sedona Red Rock Home", 
           price: "$1,100,000", 
           slug: "sedona-red-rock-home",
-          img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=600",
+          img: "A11.jpeg",
           bedrooms: 3, 
           bathrooms: 3, 
           area: "2,500 sq ft", 
@@ -185,7 +223,7 @@ const PropertyDetail = () => {
           title: "Tucson Ranch House", 
           price: "$420,000", 
           slug: "tucson-ranch-house",
-          img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=600",
+          img: "A12.jpeg",
           bedrooms: 3, 
           bathrooms: 2, 
           area: "1,800 sq ft", 
@@ -206,7 +244,7 @@ const PropertyDetail = () => {
           title: "South Beach Penthouse", 
           price: "$3,200,000", 
           slug: "south-beach-penthouse",
-          img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=600",
+          img: "A13.jpeg",
           bedrooms: 3, 
           bathrooms: 3, 
           area: "2,800 sq ft", 
@@ -220,7 +258,7 @@ const PropertyDetail = () => {
           title: "Coral Gables Estate", 
           price: "$2,100,000", 
           slug: "coral-gables-estate",
-          img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=600",
+          img: "A14.jpeg",
           bedrooms: 5, 
           bathrooms: 5, 
           area: "4,500 sq ft", 
@@ -234,7 +272,7 @@ const PropertyDetail = () => {
           title: "Brickell Bay Condo", 
           price: "$750,000", 
           slug: "brickell-bay-condo",
-          img: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=600",
+          img: "A15.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,400 sq ft", 
@@ -248,7 +286,7 @@ const PropertyDetail = () => {
           title: "Key Biscayne Villa", 
           price: "$4,500,000", 
           slug: "key-biscayne-villa",
-          img: "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?q=80&w=600",
+          img: "A16.jpeg",
           bedrooms: 6, 
           bathrooms: 6, 
           area: "5,200 sq ft", 
@@ -269,7 +307,7 @@ const PropertyDetail = () => {
           title: "Beverly Hills Mansion", 
           price: "$5,800,000", 
           slug: "beverly-hills-mansion",
-          img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=600",
+          img: "A17.jpeg",
           bedrooms: 6, 
           bathrooms: 7, 
           area: "6,500 sq ft", 
@@ -283,7 +321,7 @@ const PropertyDetail = () => {
           title: "Santa Monica Beach House", 
           price: "$2,400,000", 
           slug: "santa-monica-beach-house",
-          img: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=600",
+          img: "A18.jpeg",
           bedrooms: 4, 
           bathrooms: 3, 
           area: "2,800 sq ft", 
@@ -297,7 +335,7 @@ const PropertyDetail = () => {
           title: "Hollywood Hills Modern", 
           price: "$3,100,000", 
           slug: "hollywood-hills-modern",
-          img: "https://images.unsplash.com/photo-1430285561322-7808604715df?q=80&w=600",
+          img: "A19.jpeg",
           bedrooms: 4, 
           bathrooms: 4, 
           area: "3,500 sq ft", 
@@ -311,7 +349,7 @@ const PropertyDetail = () => {
           title: "Silver Lake Bungalow", 
           price: "$980,000", 
           slug: "silver-lake-bungalow",
-          img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600",
+          img: "A20.jpeg",
           bedrooms: 3, 
           bathrooms: 2, 
           area: "1,600 sq ft", 
@@ -332,7 +370,7 @@ const PropertyDetail = () => {
           title: "Maui Beachfront Villa", 
           price: "$2,900,000", 
           slug: "maui-beachfront-villa",
-          img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=600",
+          img: "A21.jpeg",
           bedrooms: 4, 
           bathrooms: 4, 
           area: "3,200 sq ft", 
@@ -346,7 +384,7 @@ const PropertyDetail = () => {
           title: "Oahu Mountain Retreat", 
           price: "$1,200,000", 
           slug: "oahu-mountain-retreat",
-          img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=600",
+          img: "A22.jpeg",
           bedrooms: 3, 
           bathrooms: 3, 
           area: "2,400 sq ft", 
@@ -360,7 +398,7 @@ const PropertyDetail = () => {
           title: "Honolulu Skyline Suite", 
           price: "$850,000", 
           slug: "honolulu-skyline-suite",
-          img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600",
+          img: "A23.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,300 sq ft", 
@@ -374,7 +412,7 @@ const PropertyDetail = () => {
           title: "Kauai Eco House", 
           price: "$1,100,000", 
           slug: "kauai-eco-house",
-          img: "https://images.unsplash.com/photo-1472224371017-08207f84aaae?q=80&w=600",
+          img: "A24.jpeg",
           bedrooms: 3, 
           bathrooms: 2, 
           area: "2,000 sq ft", 
@@ -395,7 +433,7 @@ const PropertyDetail = () => {
           title: "Orlando Theme Park Villa", 
           price: "$650,000", 
           slug: "orlando-theme-park-villa",
-          img: "https://images.unsplash.com/photo-1580587767303-94101789516a?q=80&w=600",
+          img: "A25.jpg",
           bedrooms: 4, 
           bathrooms: 3, 
           area: "2,500 sq ft", 
@@ -409,7 +447,7 @@ const PropertyDetail = () => {
           title: "Tampa Bay Waterfront", 
           price: "$1,200,000", 
           slug: "tampa-bay-waterfront",
-          img: "https://images.unsplash.com/photo-1448630305456-91e8d6afb575?q=80&w=600",
+          img: "A26.jpg",
           bedrooms: 3, 
           bathrooms: 3, 
           area: "2,200 sq ft", 
@@ -423,7 +461,7 @@ const PropertyDetail = () => {
           title: "Naples Luxury Mansion", 
           price: "$3,400,000", 
           slug: "naples-luxury-mansion",
-          img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600",
+          img: "A27.jpeg",
           bedrooms: 5, 
           bathrooms: 5, 
           area: "4,800 sq ft", 
@@ -437,7 +475,7 @@ const PropertyDetail = () => {
           title: "Jacksonville Family Estate", 
           price: "$550,000", 
           slug: "jacksonville-family-estate",
-          img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=600",
+          img: "A28.jpeg",
           bedrooms: 4, 
           bathrooms: 3, 
           area: "2,300 sq ft", 
@@ -458,7 +496,7 @@ const PropertyDetail = () => {
           title: "Lake Shore Drive Apt", 
           price: "$1,100,000", 
           slug: "lake-shore-drive-apt",
-          img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600",
+          img: "A29.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,500 sq ft", 
@@ -472,7 +510,7 @@ const PropertyDetail = () => {
           title: "Lincoln Park Brick House", 
           price: "$920,000", 
           slug: "lincoln-park-brick-house",
-          img: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=600",
+          img: "A30.jpeg",
           bedrooms: 4, 
           bathrooms: 3, 
           area: "2,800 sq ft", 
@@ -486,7 +524,7 @@ const PropertyDetail = () => {
           title: "River North Modern Loft", 
           price: "$680,000", 
           slug: "river-north-modern-loft",
-          img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=600",
+          img: "A31.jpeg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,400 sq ft", 
@@ -500,7 +538,7 @@ const PropertyDetail = () => {
           title: "Wicker Park Trendy Condo", 
           price: "$540,000", 
           slug: "wicker-park-trendy-condo",
-          img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600",
+          img: "A32.jpeg",
           bedrooms: 2, 
           bathrooms: 1, 
           area: "1,100 sq ft", 
@@ -521,7 +559,7 @@ const PropertyDetail = () => {
           title: "Capital Hill Manor", 
           price: "$1,800,000", 
           slug: "capital-hill-manor",
-          img: "https://images.unsplash.com/photo-1464146072230-91cabc968266?q=80&w=600",
+          img: "A33.jpeg",
           bedrooms: 5, 
           bathrooms: 4, 
           area: "4,200 sq ft", 
@@ -535,7 +573,7 @@ const PropertyDetail = () => {
           title: "Georgetown Classic", 
           price: "$2,200,000", 
           slug: "georgetown-classic",
-          img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600",
+          img: "A34.jpeg",
           bedrooms: 4, 
           bathrooms: 4, 
           area: "3,800 sq ft", 
@@ -549,7 +587,7 @@ const PropertyDetail = () => {
           title: "Dupont Circle Condo", 
           price: "$670,000", 
           slug: "dupont-circle-condo",
-          img: "https://images.unsplash.com/photo-1536376074432-a228d217929a?q=80&w=600",
+          img: "A35.jpg",
           bedrooms: 2, 
           bathrooms: 2, 
           area: "1,300 sq ft", 
@@ -563,7 +601,7 @@ const PropertyDetail = () => {
           title: "Potomac View Estate", 
           price: "$3,500,000", 
           slug: "potomac-view-estate",
-          img: "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?q=80&w=600",
+          img: "A36.jpeg",
           bedrooms: 6, 
           bathrooms: 6, 
           area: "5,500 sq ft", 
