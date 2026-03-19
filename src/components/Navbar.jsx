@@ -141,12 +141,19 @@ function Navbar() {
           {/* Navigation Menu - Collapsible on mobile */}
           <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
             <ul className="navbar-nav gap-3">
+            <li className="nav-item ">
+                <Link 
+                  to="/" 
+                  className="nav-link" 
+                  style={styles.navLink}
+                >
+                  Home
+                </Link>
+              </li>
               {/* Dropdown menus */}
-              {renderDropdown("Home", ["Main Page", "Modern Home", "Classic Style"])}
+              
               {renderDropdown("Listings", ["Grid Layout", "List Layout", "Map View"])}
-              {renderDropdown("Members", ["Our Agents", "Agencies", "Packages"])}
-              {renderDropdown("Blog", ["Latest News", "Real Estate Tips"])}
-              {renderDropdown("Pages", ["About Us", "Our Services", "FAQ", "Pricing"])}
+              {renderDropdown("Blog", ["About Us", "FAQ"])}
               
               {/* Contact Link - Uses React Router Link for navigation */}
               <li className="nav-item">

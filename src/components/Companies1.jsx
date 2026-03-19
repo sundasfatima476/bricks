@@ -37,17 +37,8 @@ function Companies1() {
                   maxHeight: '30px', 
                   // Filter ko remove ya change kiya taake logos black/original dikhein
                   filter: 'grayscale(100%) brightness(0)', 
-                  opacity: '0.5',
-                  transition: 'all 0.3s ease'
                 }} 
-                onMouseOver={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.filter = 'grayscale(0%) brightness(1)'; // Hover par original color
-                }}
-                onMouseOut={(e) => {
-                    e.currentTarget.style.opacity = '0.5';
-                    e.currentTarget.style.filter = 'grayscale(100%) brightness(0)';
-                }}
+               
               />
             </div>
           ))}
